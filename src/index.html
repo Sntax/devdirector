@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hello World</title>
+  <title>DevPad - A Collection of Development Related News and Posts.</title>
   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-theme.min.css">
   <link rel="stylesheet" type="text/css" href="/lib/fontawesome/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-6">This is the left column.</div>
-      <div class="col-xs-6">This is the right column.</div>
+  <div class="header container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="header__logo col-xs-12">
+          <a href="/"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>DevPad</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="body container">
+    <div class="body__item row">
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-2 col-sm-1 body__item__image">
+            <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+          </div>
+          <div class="col-xs-8 col-sm-10 body__item__content">
+            <a class="body__item__content--title">This is an example post title. The titles could be short, long or any size in between.</a>
+            <ul class="body__item__content--additional">
+              <li><a href="/">100 Comments</a></li>
+              <li>Posted 30 minutes ago to <a href="/">r/webdev</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-2 col-sm-1 body__item__weight">
+            <span class="body__item__weight--value">250</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <script type="text/javascript" src="/js/app.min.js"></script>

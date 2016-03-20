@@ -1,3 +1,3 @@
 (function(){
-  console.log('this is running');
+  console.log('Welcome to DevPad');
 })();

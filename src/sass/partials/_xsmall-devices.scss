@@ -1,3 +1,95 @@
-* {
+/* Globals ----------------------------------------------------------------- */
+body, html, * {
   font-family: $lato;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: $abbey;
+  margin: 0;
+}
+a {
+  @include transition(all linear 0.15s)
+  cursor: pointer;
+  &:hover {
+    @include transition(all linear 0.15s)
+    text-decoration: none;
+    color: $jungle-green;
+  }
+}
+p, span, ul, ol, li {
+  color: $abbey;
+}
+
+/* Header ------------------------------------------------------------------ */
+.header {
+  padding: rem-calc(40 15);
+  background-color: $mariner;
+  &__logo {
+    font-size: rem-calc(36);
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: none;
+      color: $white;
+      outline: 0;
+      .glyphicon {
+        @include transition(all linear 0.3s)
+        padding-right: rem-calc(15);
+        color: $white;
+      }
+    }
+    a:hover .glyphicon {
+      @include transition(all linear 0.3s)
+      color: $jungle-green;
+    }
+  }
+}
+
+/* Body -------------------------------------------------------------------- */
+.body {
+  padding-bottom: rem-calc(45);
+  padding-top: rem-calc(45);
+  &__item {
+    @include transition(all linear 0.3s)
+    border-bottom: 1px solid $concrete;
+      background-color: $white;
+    padding-bottom: rem-calc(45);
+    padding-top: rem-calc(45);
+    &:hover {
+      @include transition(all linear 0.3s)
+      background-color: $concrete;
+    }
+    &__image {
+      span:before {
+        width: 100%;
+        height: auto;
+      }
+    }
+    &__content {
+      &--title {
+        font-family: $lato-bold;
+        font-size: rem-calc(34);
+      }
+      &--additional {
+        list-style-type: none;
+        padding: 0;
+        margin: rem-calc(10 0 0 0);
+        li {
+          float: left;
+          &:first-child {
+            border-right: 1px solid $nobel;
+            padding-right: rem-calc(20);
+            margin-right: rem-calc(20);
+          }
+        }
+      }
+    }
+    &__weight {
+      span {
+        font-size: rem-calc(34);
+        font-family: $lato-bold;
+        color: $jungle-green;
+      }
+    }
+  }
 }
