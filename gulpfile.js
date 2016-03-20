@@ -48,6 +48,13 @@ gulp.task('libraries', function() {
   .pipe(browserSync.reload({stream: true}));
 });
 
+/* Fonts Task ---------------------------------------------------------- */
+gulp.task('fonts', function() {
+  return gulp.src('src/fonts/**/*')
+  .pipe(gulp.dest('dist/fonts/'))
+  .pipe(browserSync.reload({stream: true}));
+});
+
 /* HTML Task --------------------------------------------------------------- */
 gulp.task('html', function() {
   return gulp.src('src/*.html')
@@ -58,6 +65,7 @@ gulp.task('html', function() {
 /* Default Watch Task ------------------------------------------------------ */
 gulp.task('default', ['clean'], function() {
   gulp.start('libraries');
+  gulp.start('fonts');
   gulp.start('javascript');
   gulp.start('html');
   gulp.start('sass');
