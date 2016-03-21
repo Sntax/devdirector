@@ -52,23 +52,26 @@ p, span, ul, ol, li {
   &__item {
     @include transition(all linear 0.3s)
     border-bottom: 1px solid $concrete;
-      background-color: $white;
     padding-bottom: rem-calc(45);
     padding-top: rem-calc(45);
+    background-color: $white;
     &:hover {
       @include transition(all linear 0.3s)
       background-color: $concrete;
     }
+    &:last-child {
+      border: none;
+    }
     &__image {
-      span:before {
-        width: 100%;
-        height: auto;
+      img {
+        max-height: rem-calc(80);
+        margin: 0 auto;
       }
     }
     &__content {
       &--title {
         font-family: $lato-bold;
-        font-size: rem-calc(34);
+        font-size: rem-calc(32);
       }
       &--additional {
         list-style-type: none;
@@ -89,6 +92,8 @@ p, span, ul, ol, li {
         font-size: rem-calc(34);
         font-family: $lato-bold;
         color: $jungle-green;
+        text-align: center;
+        display: block;
       }
     }
   }

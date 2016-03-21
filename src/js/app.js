@@ -1,3 +1,1 @@
-(function(){
-  console.log('Welcome to DevPad');
-})();
+var app = angular.module('devpad', ['devpad.controllers', 'devpad.filters', 'devpad.services']);
