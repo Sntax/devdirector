@@ -5,7 +5,7 @@ controllers.controller('appControl', function($scope) {
 });
 
 // Controller for any functionality specific to post list
-controllers.controller('postsListControl', function($scope, $http, devpad) {
+controllers.controller('postsListControl', function($scope, $http, $sce, devpad) {
 
   function init() {
     redditData();
@@ -15,10 +15,10 @@ controllers.controller('postsListControl', function($scope, $http, devpad) {
 
   function redditData() {
     devpad.reddit().then(function(data) {
-      // Sorts results by number of "upvotes" or "points"
 
       console.log(data);
 
+      // Sorts results by number of "upvotes" or "points"
       function sortResults() {
         // Create a new Array to store results from API
         var results = data.data.data.children;
@@ -34,5 +34,4 @@ controllers.controller('postsListControl', function($scope, $http, devpad) {
       $scope.posts = sortResults();
     });
   }
-
 });

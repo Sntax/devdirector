@@ -79,10 +79,18 @@ p, span, ul, ol, li {
         margin: rem-calc(10 0 0 0);
         li {
           float: left;
-          &:first-child {
-            border-right: 1px solid $nobel;
-            padding-right: rem-calc(20);
-            margin-right: rem-calc(20);
+          border-right: 1px solid $nobel;
+          padding-right: rem-calc(20);
+          margin-right: rem-calc(20);
+          .extend {
+            font-family: $lato-bold;
+            color: $jungle-green;
+            display: block;
+          }
+          &:last-child {
+            padding: 0;
+            margin: 0;
+            border: 0;
           }
         }
       }

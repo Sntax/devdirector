@@ -5,7 +5,7 @@ var filters = angular.module('devpad.filters', []);
 // return how long ago the post was created.
 filters.filter('epochToHuman', function() {
 
-  return function (value) {
+  return function(value) {
 
     var createdEpochUTC = value;
     var currentEpochUTC = Math.round(new Date().getTime()/1000.0);
@@ -32,12 +32,11 @@ filters.filter('epochToHuman', function() {
   };
 });
 
-
 // Filter through Reddit API returned thumbnail values and return default
 // images based on whether or not an image exists on the server.
 filters.filter('imageFallback', function() {
 
-  return function (value) {
+  return function(value) {
 
     var imageURL = value;
 

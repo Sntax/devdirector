@@ -13,6 +13,7 @@
   "author": "Andrew Hill",
   "license": "ISC",
   "devDependencies": {
+    "browser-sync": "^2.11.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-imagemin": "^2.4.0",

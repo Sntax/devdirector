@@ -21,7 +21,6 @@ gulp.task('clean', function() {
 /* Images Task ------------------------------------------------------------- */
 gulp.task('images', function() {
   return gulp.src('src/img/**/*')
-    .pipe(rimraf('dist/img'))
     .pipe(imagemin({
       optimizationLevel: 3,
       progressive: true,
@@ -38,7 +37,8 @@ gulp.task('javascript', function() {
       'src/js/app.js',
       'src/js/services.js',
       'src/js/controllers.js',
-      'src/js/filters.js'
+      'src/js/filters.js',
+      'src/js/directives.js'
     ])
     .pipe(plumber(function(error) {
       utils.log(utils.colors.red(error.message));

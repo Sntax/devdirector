@@ -28,12 +28,18 @@
           <div class="col-xs-8 col-sm-10 body__item__content">
             <a class="body__item__content--title" ng-href="{{ post.data.url }}" target="_blank">{{ post.data.title }}</a>
             <ul class="body__item__content--additional">
+              <li>
+                <a class="extend" ng-href="/">Expand</a>
+              </li>
               <li><a ng-href="/">100 Comments</a></li>
               <li>Posted {{ post.data.created_utc | epochToHuman }} to <a ng-href="http://www.reddit.com/r/{{ post.data.subreddit }}" target="_blank">r/{{ post.data.subreddit }}</a></li>
             </ul>
           </div>
           <div class="col-xs-2 col-sm-1 body__item__weight">
             <span class="body__item__weight--value">{{ post.data.ups }}</span>
+          </div>
+          <div class="col-xs-12 body__item__extended-content">
+            <selftext></selftext>
           </div>
         </div>
       </div>
