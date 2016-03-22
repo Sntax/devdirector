@@ -31,19 +31,3 @@ filters.filter('epochToHuman', function() {
     }
   };
 });
-
-// Filter through Reddit API returned thumbnail values and return default
-// images based on whether or not an image exists on the server.
-filters.filter('imageFallback', function() {
-
-  return function(value) {
-
-    var imageURL = value;
-
-    if (imageURL === 'self' || imageURL === 'default' || imageURL === '') {
-      return '/img/reddit.svg';
-    } else {
-      return imageURL;
-    }
-  };
-});
