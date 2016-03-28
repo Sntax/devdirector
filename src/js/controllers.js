@@ -1,54 +1,62 @@
 var controllers = angular.module('devpad.controllers', []);
 
-// Application level controller for any global functionality. 
-controllers.controller('appControl', function($scope) {
-});
-
 // Controller for any functionality specific to post list
 controllers.controller('postsListControl', function($scope, $sce, $http, devpad) {
-
+  // Gets data from various developer sources.
   var getData = {
-
+    // Contains all data collection/manipulation functions.
     init: function() {
+      // Collect & manipulate Reddit API data.
       getData.reddit();
+      // Collect & manipulate Hacker News API data.
+      getData.hackerNews();
     },
 
     reddit: function() {
-      devpad.redditAPI().then(function(data) {
-        // Sorts results by number of "upvotes" or "points"
-        function sortResults() {
+      // Return a promise on a Reddit service call.
+      devpad.callRedditAPI().then(function(data) {
+        // Sorts data by number of "upvotes" or "points"
+        function sortRedditPosts() {
           // Create a new Array to store results from API
-          var results = data.data.data.children;
-          // Sorting function.
-          results.sort(
+          var redditPost = data.data.data.children;
+          // Sort reddit posts...
+          redditPost.sort(
             function(a, b) {
-              return parseFloat(b.data.ups) - parseFloat(a.data.ups);
+              // ...by number of upvotes.
+              return parseFloat(b.data.score) - parseFloat(a.data.score);
             }
           );
-          return results;
+          // Return all posts sorted by number of upvotes.
+          return redditPost;
         }
-
         // Add placeholder image urls where images are not available.
         function finalData() {
-
-          var sortedResults = sortResults();
-
-          for (var i = 0; i<sortedResults.length; i++) {
-
-            var imgURL = sortedResults[i].data.thumbnail;
-
+          // Create a reference to the sorted posts.
+          var sortedRedditPosts = sortRedditPosts();
+          // For each post in sorted posts.
+          for (var i = 0; i < sortedRedditPosts.length; i++) {
+            // Store a reference to the current posts image url.
+            var imgURL = sortedRedditPosts[i].data.thumbnail;
+            // If there is no valid URL in the current post
             if (imgURL === 'self' || imgURL === 'default' || imgURL === '') {
-              sortedResults[i].data.thumbnail = '/img/reddit.svg';
+              // Give it a valid URL to the placeholder image.
+              sortedRedditPosts[i].data.thumbnail = '/img/reddit.svg';
             }
           }
-
-          return sortedResults;
+          // Return all posts sorted by number of upvotes and with valid
+          // thumbnail image URLs.
+          return sortedRedditPosts;
         }
-
         // Binds newly formatted and sorted results to the posts $scope
         $scope.posts = finalData();
+        // console.log(finalData());
       });
+    },
+
+    hackerNews: function() {
+      // ...todo
     }
   };
   getData.init();
 });
+
