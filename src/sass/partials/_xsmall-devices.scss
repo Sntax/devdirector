@@ -115,6 +115,9 @@ a {
     &:hover {
       @include transition(all linear 0.3s);
       background-color: $concrete;
+      .body__item__content--preview {
+        background-color: $white;
+      }
     }
     &:last-child {
       border: none;
@@ -138,9 +141,8 @@ a {
           border-right: 1px solid $nobel;
           padding-right: rem-calc(20);
           margin-right: rem-calc(20);
-          .extend {
+          .read-more {
             font-family: $lato-bold;
-            color: $jungle-green;
             display: block;
           }
           &:last-child {
@@ -148,9 +150,16 @@ a {
             margin: 0;
             border: 0;
           }
+          a {
+            color: $jungle-green;
+            &:hover {
+              color: $mariner;
+            }
+          }
         }
       }
       &--preview {
+        @include transition(all linear 0.3s);
         background-color: $concrete;
         margin-top: rem-calc(30);
         white-space: pre-wrap;
