@@ -10,6 +10,8 @@ controllers.controller('postsListControl', function($scope, $sanitize, $sce, $ht
       getData.reddit();
       // Collect & manipulate Hacker News API data.
       getData.hackerNews();
+      // Collect & manipulate Twitter API data.
+      getData.twitter();
     },
 
     reddit: function() {
@@ -39,6 +41,10 @@ controllers.controller('postsListControl', function($scope, $sanitize, $sce, $ht
 
     hackerNews: function() {
       // ...todo
+    },
+
+    twitter: function() {
+      // ...todo
     }
   };
 
@@ -49,7 +55,7 @@ controllers.controller('postsListControl', function($scope, $sanitize, $sce, $ht
     init: function() {
       utilities.postExpansion();
     },
-    //
+
     sortOrder: function(postData) {
       // Sort reddit posts...
       postData.sort(
