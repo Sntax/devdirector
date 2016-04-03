@@ -46,6 +46,10 @@ controllers.controller('postsListControl', function($scope, $sanitize, $sce, $ht
 
   // Utility Functions.
   var utilities = {
+    init: function() {
+      utilities.postExpansion();
+    },
+    //
     sortOrder: function(postData) {
       // Sort reddit posts...
       postData.sort(
@@ -56,6 +60,15 @@ controllers.controller('postsListControl', function($scope, $sanitize, $sce, $ht
       );
       // Return all posts sorted by number of upvotes.
       return postData;
+    },
+
+    postExpansion: function() {
+      $scope.expand = function(post) {
+         post.show = !post.show;
+      };
     }
   };
+
+  utilities.init();
 });
+

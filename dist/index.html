@@ -54,12 +54,12 @@
                     <div class="col-xs-8 col-sm-10 body__item__content">
                         <a class="body__item__content--title" ng-href="{{ post.data.url }}" target="_blank">{{ post.data.title }}</a>
                         <ul class="body__item__content--additional">
-                            <li ng-if="post.data.selftext"><a class="read-more" ng-href="/">Read More</a></li>
+                            <li ng-if="post.data.selftext"><a class="read-more" ng-href="#" ng-click="expand(post)">Read More</a></li>
                             <li><a ng-href="http://www.reddit.com{{ post.data.permalink }}" target="_blank">{{ post.data.num_comments }} Comments</a></li>
                             <li>Posted {{ post.data.created_utc | epochToHuman }} to <a ng-href="http://www.reddit.com/r/{{ post.data.subreddit }}" target="_blank">r/{{ post.data.subreddit }}</a></li>
                         </ul>
                         <div ng-if="post.data.selftext">
-                          <div class="body__item__content--preview" ng-bind-html="post.data.selftext"></div>
+                            <div class="body__item__content--preview" ng-show="post.show" ng-bind-html="post.data.selftext"></div>
                         </div>
                     </div>
                     <div class="col-xs-2 col-sm-1 body__item__weight">

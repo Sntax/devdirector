@@ -21,7 +21,7 @@ a {
 
 /* Header ------------------------------------------------------------------ */
 .header {
-  background-color: $mariner;
+  background-color: rgba(16, 108, 200, 0.9);
   position: fixed;
   width: 100%;
   z-index: 1;
@@ -130,6 +130,7 @@ a {
       &--title {
         font-family: $lato-bold;
         font-size: rem-calc(32);
+        color: $mariner;
       }
       &--additional {
         margin: rem-calc(10 0 0 0);
