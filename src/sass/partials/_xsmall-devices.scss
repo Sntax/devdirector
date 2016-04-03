@@ -78,6 +78,11 @@ a {
         @include transition(all linear 0.3s);
         color: $cornflower-blue;
       }
+      span {
+        margin-left: rem-calc(20);
+        font-size: rem-calc(24);
+        color: $santas-gray;
+      }
     }
     &-right {
       margin: rem-calc(5 0);
@@ -85,13 +90,13 @@ a {
     &-default .navbar-nav {
       li {
         @include border-radius(rem-calc(10px));
-        @include transition(all linear 0.3s);
+        @include transition(background linear 0.3s);
         &:not(:last-child) {
           margin-right: rem-calc(10);
         }
         &:hover {
           @include border-radius(rem-calc(10px));
-          @include transition(all linear 0.3s);
+          @include transition(background linear 0.3s);
           background: $cornflower-blue;
           @include box-shadow(none);
           > a {
