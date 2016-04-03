@@ -1,7 +1,7 @@
-var controllers = angular.module('devpad.controllers', []);
+var controllers = angular.module('devpad.controllers', ['ngSanitize']);
 
 // Controller for any functionality specific to post list
-controllers.controller('postsListControl', function($scope, $sce, $http, devpad) {
+controllers.controller('postsListControl', function($scope, $sanitize, $sce, $http, devpad) {
   // Gets data from various developer sources.
   var getData = {
     // Contains all data collection/manipulation functions.
@@ -15,27 +15,13 @@ controllers.controller('postsListControl', function($scope, $sce, $http, devpad)
     reddit: function() {
       // Return a promise on a Reddit service call.
       devpad.callRedditAPI().then(function(data) {
-        // Sorts data by number of "upvotes" or "points"
-        function sortRedditPosts() {
-          // Create a new Array to store results from API
-          var redditPost = data.data.data.children;
-          // Sort reddit posts...
-          redditPost.sort(
-            function(a, b) {
-              // ...by number of upvotes.
-              return parseFloat(b.data.score) - parseFloat(a.data.score);
-            }
-          );
-          // Return all posts sorted by number of upvotes.
-          return redditPost;
-        }
         // Add placeholder image urls where images are not available.
-        function finalData() {
+        function checkThumbnailURLs() {
           // Create a reference to the sorted posts.
-          var sortedRedditPosts = sortRedditPosts();
+          var sortedRedditPosts = utilities.sortOrder(data.data.data.children);
           // For each post in sorted posts.
           for (var i = 0; i < sortedRedditPosts.length; i++) {
-            // Store a reference to the current posts image url.
+            // Store a reference to the current posts image URL.
             var imgURL = sortedRedditPosts[i].data.thumbnail;
             // If there is no valid URL in the current post
             if (imgURL === 'self' || imgURL === 'default' || imgURL === '') {
@@ -43,13 +29,11 @@ controllers.controller('postsListControl', function($scope, $sce, $http, devpad)
               sortedRedditPosts[i].data.thumbnail = '/img/reddit.svg';
             }
           }
-          // Return all posts sorted by number of upvotes and with valid
-          // thumbnail image URLs.
+          // Return all posts sorted by number of upvotes and with valid thumbnail image URLs.
           return sortedRedditPosts;
         }
         // Binds newly formatted and sorted results to the posts $scope
-        $scope.posts = finalData();
-        // console.log(finalData());
+        $scope.posts = checkThumbnailURLs();
       });
     },
 
@@ -57,6 +41,21 @@ controllers.controller('postsListControl', function($scope, $sce, $http, devpad)
       // ...todo
     }
   };
-  getData.init();
-});
 
+  getData.init();
+
+  // Utility Functions.
+  var utilities = {
+    sortOrder: function(postData) {
+      // Sort reddit posts...
+      postData.sort(
+        function(a, b) {
+          // ...by number of upvotes.
+          return parseFloat(b.data.score) - parseFloat(a.data.score);
+        }
+      );
+      // Return all posts sorted by number of upvotes.
+      return postData;
+    }
+  };
+});

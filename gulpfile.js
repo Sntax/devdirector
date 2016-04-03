@@ -27,13 +27,12 @@ gulp.task('images', function() {
       interlaced: true
     }))
     .pipe(gulp.dest('dist/img'))
-    .pipe(browserSync.reload({stream: true}));
+    .pipe(browserSync.reload({ stream: true }));
 });
 
 /* JavaScript Task --------------------------------------------------------- */
 gulp.task('javascript', function() {
   return gulp.src([
-      'src/lib/angular/angular.js',
       'src/js/app.js',
       'src/js/services.js',
       'src/js/controllers.js',
@@ -52,7 +51,7 @@ gulp.task('javascript', function() {
       compress: true
     }))
     .pipe(gulp.dest('dist/js'))
-    .pipe(browserSync.reload({stream: true}));
+    .pipe(browserSync.reload({ stream: true }));
 });
 
 /* Sass Task --------------------------------------------------------------- */
@@ -63,31 +62,31 @@ gulp.task('sass', function() {
       this.emit('end');
     }))
     .pipe(sourcemaps.init())
-    .pipe(sass({outputStyle: 'compressed'}))
+    .pipe(sass({ outputStyle: 'compressed' }))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('dist/css'))
-    .pipe(browserSync.stream({match: '**/*.css'}));
+    .pipe(browserSync.stream({ match: '**/*.css' }));
 });
 
 /* Libraries Task ---------------------------------------------------------- */
 gulp.task('libraries', function() {
   return gulp.src('src/lib/**/*')
-  .pipe(gulp.dest('dist/lib/'))
-  .pipe(browserSync.reload({stream: true}));
+    .pipe(gulp.dest('dist/lib/'))
+    .pipe(browserSync.reload({ stream: true }));
 });
 
 /* Fonts Task ---------------------------------------------------------- */
 gulp.task('fonts', function() {
   return gulp.src('src/fonts/**/*')
-  .pipe(gulp.dest('dist/fonts/'))
-  .pipe(browserSync.reload({stream: true}));
+    .pipe(gulp.dest('dist/fonts/'))
+    .pipe(browserSync.reload({ stream: true }));
 });
 
 /* HTML Task --------------------------------------------------------------- */
 gulp.task('html', function() {
   return gulp.src('src/*.html')
-  .pipe(gulp.dest('dist/'))
-  .pipe(browserSync.reload({stream: true}));
+    .pipe(gulp.dest('dist/'))
+    .pipe(browserSync.reload({ stream: true }));
 });
 
 /* Default Watch Task ------------------------------------------------------ */

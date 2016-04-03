@@ -8,11 +8,11 @@ filters.filter('epochToHuman', function() {
   return function(value) {
 
     var createdEpochUTC = value;
-    var currentEpochUTC = Math.round(new Date().getTime()/1000.0);
+    var currentEpochUTC = Math.round(new Date().getTime() / 1000.0);
     var comparedEpochUTC = (currentEpochUTC * 1000) - (createdEpochUTC * 1000);
 
     var days = Math.floor(comparedEpochUTC / 1000 / 60 / 60 / 24);
-    var hours =  Math.floor(comparedEpochUTC / 1000 / 60 / 60);
+    var hours = Math.floor(comparedEpochUTC / 1000 / 60 / 60);
     var minutes = Math.floor(comparedEpochUTC / 1000 / 60);
     var seconds = Math.floor(comparedEpochUTC / 1000);
 
@@ -30,4 +30,11 @@ filters.filter('epochToHuman', function() {
       return '';
     }
   };
+});
+
+//
+filters.filter('unicodeToHTML', function($sce) {
+    return function(input){
+        return $sce.trustAsHtml(input);
+    };
 });

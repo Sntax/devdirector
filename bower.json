@@ -1,0 +1,31 @@
+{
+  "name": "DevPad",
+  "description": "Devpad reaches out to popular developer news sources to create a centralized location to keep up to date.",
+  "main": "index.html",
+  "authors": [
+    "Andrew Hill"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "Gulp",
+    "Bower",
+    "Sass",
+    "Angular"
+  ],
+  "homepage": "https://github.com/Sntax/devpad",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.2",
+    "font-awesome": "^4.5.0",
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.3"
+  }
+}

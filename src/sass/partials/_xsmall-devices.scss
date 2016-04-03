@@ -6,67 +6,122 @@ h1, h2, h3, h4, h5, h6 {
   color: $abbey;
   margin: 0;
 }
+p, span, ul, ol, li {
+  color: $abbey;
+}
 a {
-  @include transition(all linear 0.15s)
+  @include transition(all linear 0.15s);
   cursor: pointer;
   &:hover {
-    @include transition(all linear 0.15s)
+    @include transition(all linear 0.15s);
     text-decoration: none;
     color: $jungle-green;
   }
 }
-p, span, ul, ol, li {
-  color: $abbey;
-}
 
 /* Header ------------------------------------------------------------------ */
 .header {
-  padding: rem-calc(40 15);
   background-color: $mariner;
-  &__logo {
-    font-size: rem-calc(36);
-    a,
-    a:hover,
-    a:focus,
-    a:active {
-      text-decoration: none;
-      color: $white;
-      outline: 0;
-      .glyphicon {
-        @include transition(all linear 0.3s)
-        padding-right: rem-calc(15);
-        color: $white;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  .navbar {
+    @include box-shadow(none);
+    padding: rem-calc(20 0);
+    background: none;
+    border-radius: 0;
+    border: none;
+    margin: 0;
+    &-header {
+      button {
+        background-color: $mariner;
+        border: none;
+        .icon-bar {
+          background-color: $white;
+        }
+        &:hover,
+        &:active,
+        &:focus {
+          background-color: $mariner-dark;
+          outline: none;
+        }
       }
     }
-    a:hover .glyphicon {
-      @include transition(all linear 0.3s)
-      color: $jungle-green;
+    &-collapse {
+      box-shadow: none;
+      border: none;
+    }
+    &-logo {
+      font-size: rem-calc(36);
+      padding: rem-calc(9 0);
+      a,
+      a:hover,
+      a:focus,
+      a:active {
+        text-decoration: none;
+        color: $white;
+        outline: 0;
+        .glyphicon {
+          @include transition(all linear 0.3s);
+          padding-right: rem-calc(15);
+          color: $white;
+        }
+      }
+      a:hover .glyphicon {
+        @include transition(all linear 0.3s);
+        color: $jungle-green;
+      }
+    }
+    &-default .navbar-nav {
+      li {
+        @include transition(all linear 0.3s);
+        &:not(:last-child) {
+          margin-right: rem-calc(10);
+        }
+        &:hover {
+          @include transition(all linear 0.3s);
+          @include box-shadow(none);
+          background: $mariner-dark;
+        }
+      }
+      > li > a {
+        text-shadow: none;
+        color: $white;
+      }
+      > li.active > a {
+        @include box-shadow(none);
+        background: $mariner-dark;
+        &:hover,
+        &:active,
+        &:focus {
+          color: $white;
+          outline: none;
+        }
+      }
     }
   }
 }
 
 /* Body -------------------------------------------------------------------- */
 .body {
-  padding-bottom: rem-calc(45);
-  padding-top: rem-calc(45);
+  padding: rem-calc(45 15);
+  margin-top: rem-calc(80);
   &__item {
-    @include transition(all linear 0.3s)
+    @include transition(all linear 0.3s);
     border-bottom: 1px solid $concrete;
     padding-bottom: rem-calc(45);
     padding-top: rem-calc(45);
     background-color: $white;
     &:hover {
-      @include transition(all linear 0.3s)
+      @include transition(all linear 0.3s);
       background-color: $concrete;
     }
     &:last-child {
       border: none;
     }
-    &__image {
-      img {
-        max-height: rem-calc(80);
-        margin: 0 auto;
-      }
+    &__image img {
+      max-height: rem-calc(80);
+      margin: 0 auto;
     }
     &__content {
       &--title {
@@ -74,9 +129,10 @@ p, span, ul, ol, li {
         font-size: rem-calc(32);
       }
       &--additional {
-        list-style-type: none;
-        padding: 0;
         margin: rem-calc(10 0 0 0);
+        list-style-type: none;
+        display: table;
+        padding: 0;
         li {
           float: left;
           border-right: 1px solid $nobel;
@@ -94,15 +150,19 @@ p, span, ul, ol, li {
           }
         }
       }
-    }
-    &__weight {
-      span {
-        font-size: rem-calc(34);
-        font-family: $lato-bold;
-        color: $jungle-green;
-        text-align: center;
-        display: block;
+      &--preview {
+        background-color: $concrete;
+        margin-top: rem-calc(30);
+        white-space: pre-wrap;
+        padding: rem-calc(25);
       }
+    }
+    &__weight span {
+      font-size: rem-calc(34);
+      font-family: $lato-bold;
+      color: $jungle-green;
+      text-align: center;
+      display: block;
     }
   }
 }
