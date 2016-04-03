@@ -1,13 +1,14 @@
 /* Globals ----------------------------------------------------------------- */
-body, html, * {
+body, html {
+  background-color: $athens-gray;
   font-family: $lato;
 }
 h1, h2, h3, h4, h5, h6 {
-  color: $abbey;
+  color: $pickled-bluewood;
   margin: 0;
 }
 p, span, ul, ol, li {
-  color: $abbey;
+  color: $pickled-bluewood;
 }
 a {
   @include transition(all linear 0.15s);
@@ -15,16 +16,27 @@ a {
   &:hover {
     @include transition(all linear 0.15s);
     text-decoration: none;
-    color: $jungle-green;
+    color: $cornflower-blue;
   }
 }
 
 /* Header ------------------------------------------------------------------ */
 .header {
-  background-color: rgba(16, 108, 200, 0.9);
+  background-color: rgba(255, 255, 255, 0.85);
   position: fixed;
   width: 100%;
   z-index: 1;
+  &__gradient-bar {
+    height: rem-calc(5);
+    background: $royal-blue;
+    background: -moz-linear-gradient(left, $royal-blue 0%, $eastern-blue 20%, $caribbean-green 50%, $eastern-blue 80%, $royal-blue 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, $royal-blue), color-stop(20%, $eastern-blue), color-stop(50%, $caribbean-green), color-stop(80%, $eastern-blue), color-stop(100%, $royal-blue));
+    background: -webkit-linear-gradient(left, $royal-blue 0%, $eastern-blue 20%, $caribbean-green 50%, $eastern-blue 80%, $royal-blue 100%);
+    background: -o-linear-gradient(left, $royal-blue 0%, $eastern-blue 20%, $caribbean-green 50%, $eastern-blue 80%, $royal-blue 100%);
+    background: -ms-linear-gradient(left, $royal-blue 0%, $eastern-blue 20%, $caribbean-green 50%, $eastern-blue 80%, $royal-blue 100%);
+    background: linear-gradient(to right, $royal-blue 0%, $eastern-blue 20%, $caribbean-green 50%, $eastern-blue 80%, $royal-blue 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$royal-blue, endColorstr=$royal-blue, GradientType=1);
+  }
   .navbar {
     @include box-shadow(none);
     padding: rem-calc(20 0);
@@ -59,18 +71,16 @@ a {
       a:focus,
       a:active {
         text-decoration: none;
-        color: $white;
+        color: $pickled-bluewood;
         outline: 0;
-        .glyphicon {
-          @include transition(all linear 0.3s);
-          padding-right: rem-calc(15);
-          color: $white;
-        }
       }
       a:hover .glyphicon {
         @include transition(all linear 0.3s);
-        color: $jungle-green;
+        color: $cornflower-blue;
       }
+    }
+    &-right {
+      margin: rem-calc(5 0);
     }
     &-default .navbar-nav {
       li {
@@ -80,17 +90,21 @@ a {
         }
         &:hover {
           @include transition(all linear 0.3s);
+          background: $cornflower-blue;
+          border-radius: rem-calc(10);
           @include box-shadow(none);
-          background: $mariner-dark;
         }
       }
       > li > a {
+        border-radius: rem-calc(10);
+        padding: rem-calc(10 20);
+        color: $pickled-bluewood;
         text-shadow: none;
-        color: $white;
       }
       > li.active > a {
+        background: $cornflower-blue;
         @include box-shadow(none);
-        background: $mariner-dark;
+        color: $white;
         &:hover,
         &:active,
         &:focus {
@@ -105,22 +119,36 @@ a {
 /* Body -------------------------------------------------------------------- */
 .body {
   padding: rem-calc(45 15);
-  margin-top: rem-calc(80);
   &__item {
     @include transition(all linear 0.3s);
-    border-bottom: 1px solid $concrete;
+    border-bottom: solid $athens-gray rem-calc(1);
     padding-bottom: rem-calc(45);
     padding-top: rem-calc(45);
     background-color: $white;
     &:hover {
       @include transition(all linear 0.3s);
-      background-color: $concrete;
+      background-color: $titan-white;
       .body__item__content--preview {
         background-color: $white;
       }
     }
+    &:first-child {
+      -webkit-border-top-left-radius: rem-calc(10);
+      -webkit-border-top-right-radius: rem-calc(10);
+      -moz-border-radius-topleft: rem-calc(10);
+      -moz-border-radius-topright: rem-calc(10);
+      border-top-left-radius: rem-calc(10);
+      border-top-right-radius: rem-calc(10);
+      margin-top: rem-calc(150);
+    }
     &:last-child {
       border: none;
+      -webkit-border-bottom-right-radius: rem-calc(10);
+      -webkit-border-bottom-left-radius: rem-calc(10);
+      -moz-border-radius-bottomright: rem-calc(10);
+      -moz-border-radius-bottomleft: rem-calc(10);
+      border-bottom-right-radius: rem-calc(10);
+      border-bottom-left-radius: rem-calc(10)
     }
     &__image img {
       max-height: rem-calc(80);
@@ -128,9 +156,9 @@ a {
     }
     &__content {
       &--title {
-        font-family: $lato-bold;
+        font-family: $lato;
         font-size: rem-calc(32);
-        color: $mariner;
+        color: $pickled-bluewood;
       }
       &--additional {
         margin: rem-calc(10 0 0 0);
@@ -138,12 +166,14 @@ a {
         display: table;
         padding: 0;
         li {
-          float: left;
-          border-right: 1px solid $nobel;
+          border-right: solid $santas-gray rem-calc(1);
           padding-right: rem-calc(20);
           margin-right: rem-calc(20);
+          color: $santas-gray;
+          float: left;
           .preview {
             font-family: $lato-bold;
+            color: $eastern-blue;
             display: block;
           }
           &:last-child {
@@ -152,16 +182,20 @@ a {
             border: 0;
           }
           a {
-            color: $jungle-green;
-            &:hover {
-              color: $mariner;
+            color: $cornflower-blue;
+            &:hover, {
+              color: $caribbean-green;
             }
           }
         }
       }
       &--preview {
         @include transition(all linear 0.3s);
-        background-color: $concrete;
+        -webkit-border-radius: rem-calc(10);
+        -moz-border-radius: rem-calc(10);
+        background-color: $titan-white;
+        border-radius: rem-calc(10);
+        color: $pickled-bluewood;
         margin-top: rem-calc(30);
         white-space: pre-wrap;
         padding: rem-calc(25);
@@ -170,7 +204,7 @@ a {
     &__weight span {
       font-size: rem-calc(34);
       font-family: $lato-bold;
-      color: $jungle-green;
+      color: $caribbean-green;
       text-align: center;
       display: block;
     }
