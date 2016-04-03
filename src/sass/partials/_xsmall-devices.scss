@@ -38,10 +38,10 @@ a {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$royal-blue, endColorstr=$royal-blue, GradientType=1);
   }
   .navbar {
+    @include border-radius(0);
     @include box-shadow(none);
     padding: rem-calc(20 0);
     background: none;
-    border-radius: 0;
     border: none;
     margin: 0;
     &-header {
@@ -84,19 +84,23 @@ a {
     }
     &-default .navbar-nav {
       li {
+        @include border-radius(rem-calc(10px));
         @include transition(all linear 0.3s);
         &:not(:last-child) {
           margin-right: rem-calc(10);
         }
         &:hover {
+          @include border-radius(rem-calc(10px));
           @include transition(all linear 0.3s);
           background: $cornflower-blue;
-          border-radius: rem-calc(10);
           @include box-shadow(none);
+          > a {
+            color: $white;
+          }
         }
       }
       > li > a {
-        border-radius: rem-calc(10);
+        @include border-radius(rem-calc(10px));
         padding: rem-calc(10 20);
         color: $pickled-bluewood;
         text-shadow: none;
@@ -133,22 +137,12 @@ a {
       }
     }
     &:first-child {
-      -webkit-border-top-left-radius: rem-calc(10);
-      -webkit-border-top-right-radius: rem-calc(10);
-      -moz-border-radius-topleft: rem-calc(10);
-      -moz-border-radius-topright: rem-calc(10);
-      border-top-left-radius: rem-calc(10);
-      border-top-right-radius: rem-calc(10);
+      @include border-top-radius(rem-calc(10));
       margin-top: rem-calc(150);
     }
     &:last-child {
+      @include border-bottom-radius(rem-calc(10));
       border: none;
-      -webkit-border-bottom-right-radius: rem-calc(10);
-      -webkit-border-bottom-left-radius: rem-calc(10);
-      -moz-border-radius-bottomright: rem-calc(10);
-      -moz-border-radius-bottomleft: rem-calc(10);
-      border-bottom-right-radius: rem-calc(10);
-      border-bottom-left-radius: rem-calc(10)
     }
     &__image img {
       max-height: rem-calc(80);
@@ -190,11 +184,9 @@ a {
         }
       }
       &--preview {
+        @include border-radius(rem-calc(10px));
         @include transition(all linear 0.3s);
-        -webkit-border-radius: rem-calc(10);
-        -moz-border-radius: rem-calc(10);
         background-color: $titan-white;
-        border-radius: rem-calc(10);
         color: $pickled-bluewood;
         margin-top: rem-calc(30);
         white-space: pre-wrap;
