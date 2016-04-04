@@ -1,21 +1,23 @@
 /* Import Node Modules ----------------------------------------------------- */
 var browserSync = require('browser-sync').create(),
-    ngannotate = require('gulp-ng-annotate'),
-    sourcemaps = require('gulp-sourcemaps'),
-    imagemin = require('gulp-imagemin'),
-    plumber = require('gulp-plumber'),
-    rimraf = require('gulp-rimraf'),
-    rename = require('gulp-rename'),
-    concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
-    args = require('yargs').argv,
-    utils = require('gulp-util'),
-    sass = require('gulp-sass'),
-    gulp = require('gulp');
+  ngannotate = require('gulp-ng-annotate'),
+  sourcemaps = require('gulp-sourcemaps'),
+  imagemin = require('gulp-imagemin'),
+  plumber = require('gulp-plumber'),
+  rimraf = require('gulp-rimraf'),
+  rename = require('gulp-rename'),
+  concat = require('gulp-concat'),
+  uglify = require('gulp-uglify'),
+  args = require('yargs').argv,
+  utils = require('gulp-util'),
+  sass = require('gulp-sass'),
+  gulp = require('gulp');
 
 /* Clean Task -------------------------------------------------------------- */
 gulp.task('clean', function() {
-  return gulp.src(['dist'], { read: false }).pipe(rimraf());
+  return gulp.src(['dist'], {
+    read: false
+  }).pipe(rimraf());
 });
 
 /* Images Task ------------------------------------------------------------- */
@@ -27,7 +29,9 @@ gulp.task('images', function() {
       interlaced: true
     }))
     .pipe(gulp.dest('dist/img'))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 /* JavaScript Task --------------------------------------------------------- */
@@ -51,7 +55,9 @@ gulp.task('javascript', function() {
       compress: true
     }))
     .pipe(gulp.dest('dist/js'))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 /* Sass Task --------------------------------------------------------------- */
@@ -62,31 +68,41 @@ gulp.task('sass', function() {
       this.emit('end');
     }))
     .pipe(sourcemaps.init())
-    .pipe(sass({ outputStyle: 'compressed' }))
+    .pipe(sass({
+      outputStyle: 'compressed'
+    }))
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('dist/css'))
-    .pipe(browserSync.stream({ match: '**/*.css' }));
+    .pipe(browserSync.stream({
+      match: '**/*.css'
+    }));
 });
 
 /* Libraries Task ---------------------------------------------------------- */
 gulp.task('libraries', function() {
   return gulp.src('src/lib/**/*')
     .pipe(gulp.dest('dist/lib/'))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 /* Fonts Task ---------------------------------------------------------- */
 gulp.task('fonts', function() {
   return gulp.src('src/fonts/**/*')
     .pipe(gulp.dest('dist/fonts/'))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 /* HTML Task --------------------------------------------------------------- */
 gulp.task('html', function() {
   return gulp.src('src/*.html')
     .pipe(gulp.dest('dist/'))
-    .pipe(browserSync.reload({ stream: true }));
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 /* Default Watch Task ------------------------------------------------------ */
@@ -99,11 +115,13 @@ gulp.task('default', ['clean'], function() {
   gulp.start('sass');
 
   browserSync.init({
-    server: { baseDir: 'dist/' },
+    server: {
+      baseDir: 'dist/'
+    },
     logFileChanges: false,
     injectChanges: true,
     proxy: args.proxy,
-    port: 8009
+    port: 1337
   });
 
   gulp.watch('src/img/**/*', ['images']);

@@ -2,6 +2,7 @@
 
 The following repository contains all code related to the DevPad. DevPad reaches out to popular developer news sources to create a centralized location to help you stay relevant.
 
+[![DevPad Screenshot](https://github.com/Sntax/devpad/blob/master/src/img/screenshot-small.png)](https://raw.githubusercontent.com/Sntax/devpad/master/src/img/screenshot-large.png)
 
 ## Dependencies
 
