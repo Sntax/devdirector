@@ -1,17 +1,18 @@
 /* Import Node Modules ----------------------------------------------------- */
 var browserSync = require('browser-sync').create(),
-    ngannotate = require('gulp-ng-annotate'),
-    sourcemaps = require('gulp-sourcemaps'),
-    imagemin = require('gulp-imagemin'),
-    plumber = require('gulp-plumber'),
-    rimraf = require('gulp-rimraf'),
-    rename = require('gulp-rename'),
-    concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
-    args = require('yargs').argv,
-    utils = require('gulp-util'),
-    sass = require('gulp-sass'),
-    gulp = require('gulp');
+  htmlInjector = require("bs-html-injector"),
+  ngannotate = require('gulp-ng-annotate'),
+  sourcemaps = require('gulp-sourcemaps'),
+  imagemin = require('gulp-imagemin'),
+  plumber = require('gulp-plumber'),
+  rimraf = require('gulp-rimraf'),
+  rename = require('gulp-rename'),
+  concat = require('gulp-concat'),
+  uglify = require('gulp-uglify'),
+  args = require('yargs').argv,
+  utils = require('gulp-util'),
+  sass = require('gulp-sass'),
+  gulp = require('gulp');
 
 /* Clean Task -------------------------------------------------------------- */
 gulp.task('clean', function() {
@@ -68,13 +69,6 @@ gulp.task('sass', function() {
     .pipe(browserSync.stream({ match: '**/*.css' }));
 });
 
-/* Libraries Task ---------------------------------------------------------- */
-gulp.task('libraries', function() {
-  return gulp.src('src/lib/**/*')
-    .pipe(gulp.dest('dist/lib/'))
-    .pipe(browserSync.reload({ stream: true }));
-});
-
 /* Fonts Task ---------------------------------------------------------- */
 gulp.task('fonts', function() {
   return gulp.src('src/fonts/**/*')
@@ -82,32 +76,34 @@ gulp.task('fonts', function() {
     .pipe(browserSync.reload({ stream: true }));
 });
 
-/* HTML Task --------------------------------------------------------------- */
-gulp.task('html', function() {
-  return gulp.src('src/*.html')
-    .pipe(gulp.dest('dist/'))
-    .pipe(browserSync.reload({ stream: true }));
-});
-
 /* Default Watch Task ------------------------------------------------------ */
 gulp.task('default', ['clean'], function() {
-  gulp.start('images');
-  gulp.start('libraries');
-  gulp.start('fonts');
   gulp.start('javascript');
-  gulp.start('html');
+  gulp.start('images');
+  gulp.start('fonts');
   gulp.start('sass');
 
-  browserSync.init({
-    server: { baseDir: 'dist/' },
-    logFileChanges: false,
-    injectChanges: true,
-    proxy: args.proxy,
-    port: 8009
+  browserSync.use(htmlInjector, {
+    files: 'src/**/*.html'
   });
+
+  if (args.proxy) {
+    browserSync.init({
+      logFileChanges: false,
+      injectChanges: true,
+      proxy: args.proxy,
+      port: 1337
+    });
+  } else {
+    browserSync.init({
+      server: { baseDir: './' },
+      logFileChanges: false,
+      injectChanges: true,
+      port: 1337
+    });
+  }
 
   gulp.watch('src/img/**/*', ['images']);
   gulp.watch('src/js/**/*.js', ['javascript']);
   gulp.watch('src/sass/**/*.scss', ['sass']);
-  gulp.watch('src/**/*.html', ['html']);
 });

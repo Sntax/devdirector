@@ -31,10 +31,3 @@ filters.filter('epochToHuman', function() {
     }
   };
 });
-
-//
-filters.filter('unicodeToHTML', function($sce) {
-    return function(input){
-        return $sce.trustAsHtml(input);
-    };
-});

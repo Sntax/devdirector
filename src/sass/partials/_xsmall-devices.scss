@@ -155,9 +155,19 @@ a {
     }
     &__content {
       &--title {
-        font-family: $lato;
-        font-size: rem-calc(32);
         color: $pickled-bluewood;
+        font-size: rem-calc(32);
+        text-decoration: none;
+        font-family: $lato;
+        &:focus,
+        &:active,
+        &:hover {
+          text-decoration: none;
+          outline: none;
+        }
+        &.nsfw-true {
+          color: $mojo;
+        }
       }
       &--additional {
         margin: rem-calc(10 0 0 0);
@@ -170,21 +180,24 @@ a {
           margin-right: rem-calc(20);
           color: $santas-gray;
           float: left;
-          .preview {
-            font-family: $lato-bold;
-            color: $eastern-blue;
-            display: block;
+          a {
+            color: $cornflower-blue;
+            &:hover, {
+              color: $caribbean-green;
+            }
+          }
+          &.nsfw-true {
+            color: $mojo;
           }
           &:last-child {
             padding: 0;
             margin: 0;
             border: 0;
           }
-          a {
-            color: $cornflower-blue;
-            &:hover, {
-              color: $caribbean-green;
-            }
+          .preview {
+            font-family: $lato-bold;
+            color: $eastern-blue;
+            display: block;
           }
         }
       }

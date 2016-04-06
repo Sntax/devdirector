@@ -26,11 +26,12 @@ controllers.controller('postsListControl', function($scope, $sanitize, $sce, $ht
             // Store a reference to the current posts image URL.
             var imgURL = sortedRedditPosts[i].data.thumbnail;
             // If there is no valid URL in the current post
-            if (imgURL === 'self' || imgURL === 'default' || imgURL === '') {
+            if (imgURL === 'self' || imgURL === 'default' || imgURL === 'nsfw' || imgURL === '') {
               // Give it a valid URL to the placeholder image.
-              sortedRedditPosts[i].data.thumbnail = '/img/reddit.svg';
+              sortedRedditPosts[i].data.thumbnail = './dist/img/reddit.svg';
             }
           }
+          console.log(sortedRedditPosts);
           // Return all posts sorted by number of upvotes and with valid thumbnail image URLs.
           return sortedRedditPosts;
         }

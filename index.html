@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <title>DevPad - A Collection of Development Related News and Posts.</title>
-    <link rel="stylesheet" type="text/css" ng-href="/lib/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" ng-href="/lib/bootstrap/dist/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" ng-href="/lib/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" ng-href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./lib/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="./lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./dist/css/styles.css">
     <!--[if gte IE 9]<style type="text/css">.header__gradient-bar {filter: none;}</style><![endif]-->
 </head>
 
@@ -45,10 +45,11 @@
                         <img class="img-responsive" ng-src="{{ post.data.thumbnail }}" alt="{{ post.data.title }}">
                     </div>
                     <div class="col-xs-8 col-sm-10 body__item__content">
-                        <a class="body__item__content--title" ng-href="{{ post.data.url }}" target="_blank">{{ post.data.title }}</a>
+                        <a class="body__item__content--title nsfw-{{ post.data.over_18 }}" ng-href="{{ post.data.url }}" target="_blank">{{ post.data.title }}</a>
                         <ul class="body__item__content--additional">
                             <li><a ng-href="http://www.reddit.com{{ post.data.permalink }}" target="_blank">{{ post.data.num_comments }} Comments</a></li>
                             <li>Posted {{ post.data.created_utc | epochToHuman }} to <a ng-href="http://www.reddit.com/r/{{ post.data.subreddit }}" target="_blank">r/{{ post.data.subreddit }}</a></li>
+                            <li ng-if="post.data.over_18" class="nsfw-true">NSFW</li>
                             <li ng-if="post.data.selftext"><a class="preview" ng-click="expand(post)">Preview</a></li>
                         </ul>
                         <div ng-if="post.data.selftext">
@@ -62,11 +63,11 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/lib/angular/angular.min.js"></script>
-    <script type="text/javascript" src="/lib/angular-sanitize/angular-sanitize.min.js"></script>
-    <script type="text/javascript" src="/js/app.min.js"></script>
+    <script type="text/javascript" src="./lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="./lib/angular-sanitize/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="./dist/js/app.min.js"></script>
 </body>
 
 </html>
