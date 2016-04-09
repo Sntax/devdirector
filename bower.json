@@ -26,6 +26,7 @@
     "jquery": "^2.2.2",
     "font-awesome": "^4.5.0",
     "bootstrap": "^3.3.6",
-    "angular": "^1.5.3"
+    "angular": "^1.5.3",
+    "angular-markdown-directive": "^0.3.1"
   }
 }
