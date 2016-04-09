@@ -75,12 +75,6 @@ gulp.task('fonts', function() {
     .pipe(browserSync.reload({ stream: true }));
 });
 
-/* HTML Task --------------------------------------------------------------- */
-gulp.task('html', function() {
-  return gulp.src('./**/*.html')
-  .pipe(browserSync.reload({stream: true}));
-});
-
 /* Default Watch Task ------------------------------------------------------ */
 gulp.task('default', ['clean'], function() {
   gulp.start('javascript');
@@ -93,19 +87,30 @@ gulp.task('default', ['clean'], function() {
       logFileChanges: false,
       injectChanges: true,
       proxy: args.proxy,
-      port: 1337
+      port: 1337,
+      plugins: [{
+        module: 'bs-html-injector',
+        options: {
+          files: ['./**/*.html']
+        }
+      }]
     });
   } else {
     browserSync.init({
       server: { baseDir: './' },
       logFileChanges: false,
       injectChanges: true,
-      port: 1337
+      port: 1337,
+      plugins: [{
+        module: 'bs-html-injector',
+        options: {
+          files: ['./**/*.html']
+        }
+      }]
     });
   }
 
   gulp.watch('src/js/**/*.js', ['javascript']);
   gulp.watch('src/sass/**/*.scss', ['sass']);
   gulp.watch('src/img/**/*', ['images']);
-  gulp.watch('./**/*.html', ['html']);
 });
