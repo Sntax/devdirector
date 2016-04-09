@@ -1,6 +1,5 @@
 /* Import Node Modules ----------------------------------------------------- */
 var browserSync = require('browser-sync').create(),
-  htmlInjector = require("bs-html-injector"),
   ngannotate = require('gulp-ng-annotate'),
   sourcemaps = require('gulp-sourcemaps'),
   imagemin = require('gulp-imagemin'),
@@ -76,16 +75,18 @@ gulp.task('fonts', function() {
     .pipe(browserSync.reload({ stream: true }));
 });
 
+/* HTML Task --------------------------------------------------------------- */
+gulp.task('html', function() {
+  return gulp.src('./**/*.html')
+  .pipe(browserSync.reload({stream: true}));
+});
+
 /* Default Watch Task ------------------------------------------------------ */
 gulp.task('default', ['clean'], function() {
   gulp.start('javascript');
   gulp.start('images');
   gulp.start('fonts');
   gulp.start('sass');
-
-  browserSync.use(htmlInjector, {
-    files: 'src/**/*.html'
-  });
 
   if (args.proxy) {
     browserSync.init({
@@ -103,7 +104,8 @@ gulp.task('default', ['clean'], function() {
     });
   }
 
-  gulp.watch('src/img/**/*', ['images']);
   gulp.watch('src/js/**/*.js', ['javascript']);
   gulp.watch('src/sass/**/*.scss', ['sass']);
+  gulp.watch('src/img/**/*', ['images']);
+  gulp.watch('./**/*.html', ['html']);
 });
