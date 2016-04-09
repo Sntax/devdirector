@@ -44,12 +44,12 @@
                             <span class="icon-bar"></span>
                         </button>
                         <div class="navbar-logo">
-                            <a ng-href="/">DevPad</a><span>Consolidate your developer news and updates</span>
+                            <a ng-href="/">DevPad</a>
+                            <!-- <span>Consolidate your developer news and updates</span> -->
                         </div>
                     </div>
                     <div class="collapse navbar-collapse" id="global-navigation-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a ng-click="redditPaginate()">paginate-test</a></li>
                             <li class="active"><a href="/">Reddit <span class="sr-only">(current)</span></a></li>
                             <li><a href="/">HackerNews</a></li>
                             <li><a href="/">Twitter</a></li>
@@ -66,7 +66,7 @@
                             <img class="img-responsive" ng-src="{{ post.data.thumbnail }}" alt="{{ post.data.title }}">
                         </div>
                         <div class="col-xs-8 col-sm-10 body__item__content">
-                            <a class="body__item__content--title nsfw-{{ post.data.over_18 }}" ng-href="{{ post.data.url }}" target="_blank">{{ post.data.title }}</a>
+                            <a class="body__item__content--title nsfw-{{ post.data.over_18 }}" ng-bind-html="post.data.title" ng-href="{{ post.data.url }}" target="_blank"></a>
                             <ul class="body__item__content--additional">
                                 <li><a ng-href="http://www.reddit.com{{ post.data.permalink }}" target="_blank">{{ post.data.num_comments }} Comments</a></li>
                                 <li>Posted {{ post.data.created_utc | epochToHuman }} to <a ng-href="http://www.reddit.com/r/{{ post.data.subreddit }}" target="_blank">r/{{ post.data.subreddit }}</a></li>
@@ -81,6 +81,11 @@
                             <span class="body__item__weight--value">{{ post.data.ups }}</span>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="body__item row">
+                <div class="col-xs-6">
+                    <a ng-click=reddit(after)>Next Page</a>
                 </div>
             </div>
         </div>

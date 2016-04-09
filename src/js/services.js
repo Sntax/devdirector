@@ -2,7 +2,7 @@ var services = angular.module('devpad.services', []);
 
 services.factory('devpad', function($http) {
   return {
-    callRedditAPI: function() {
+    callRedditAPI: function(after) {
 
       function formatRedditUrl(){
         var base = 'http://www.reddit.com/r/';
@@ -19,7 +19,13 @@ services.factory('devpad', function($http) {
         ];
         var subreddits = subredditsArray.join('+');
         var jsonCallback = '.json?&jsonp=JSON_CALLBACK';
-        return base + subreddits + jsonCallback;
+        var formattedURL;
+
+        if (after) {
+          return base + subreddits + jsonCallback + '&after=' + after;
+        } else {
+          return base + subreddits + jsonCallback;
+        }
       }
 
       return $http.jsonp(formatRedditUrl());
