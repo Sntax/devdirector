@@ -17,6 +17,9 @@ controllers.controller('postsListControl', function($scope, $sanitize, $sce, $ht
     reddit: function() {
       // Return a promise on a Reddit service call.
       devpad.callRedditAPI().then(function(data) {
+        // Set pagination variables.
+        redditBefore = data.data.data.before;
+        redditAfter = data.data.data.after;
         // Add placeholder image urls where images are not available.
         function checkThumbnailURLs() {
           // Create a reference to the sorted posts.
@@ -31,7 +34,6 @@ controllers.controller('postsListControl', function($scope, $sanitize, $sce, $ht
               sortedRedditPosts[i].data.thumbnail = './dist/img/reddit.svg';
             }
           }
-          console.log(sortedRedditPosts);
           // Return all posts sorted by number of upvotes and with valid thumbnail image URLs.
           return sortedRedditPosts;
         }
