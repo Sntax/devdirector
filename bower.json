@@ -1,6 +1,6 @@
 {
-  "name": "DevPad",
-  "description": "Devpad reaches out to popular developer news sources to create a centralized location to keep up to date.",
+  "name": "devdirector",
+  "description": "DevDirector reaches out to popular developer news sources to create a centralized location to keep up to date.",
   "main": "index.html",
   "authors": [
     "Andrew Hill"
@@ -12,7 +12,7 @@
     "Sass",
     "Angular"
   ],
-  "homepage": "https://github.com/Sntax/devpad",
+  "homepage": "https://github.com/Sntax/devdirector",
   "moduleType": [],
   "ignore": [
     "**/.*",
@@ -26,6 +26,7 @@
     "jquery": "^2.2.2",
     "font-awesome": "^4.5.0",
     "bootstrap": "^3.3.6",
-    "angular": "^1.5.3"
+    "angular": "^1.5.3",
+    "angular-sanitize": "^1.5.3"
   }
 }

@@ -1,6 +1,6 @@
-var services = angular.module('devpad.services', []);
+var services = angular.module('devdirector.services', []);
 
-services.factory('devpad', function($http) {
+services.factory('devdirector', function($http) {
   return {
     callRedditAPI: function(after) {
 

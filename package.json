@@ -1,7 +1,7 @@
 {
-  "name": "DevPad",
+  "name": "devdirector",
   "version": "6.5.19",
-  "description": "devpad",
+  "description": "DevDirector reaches out to popular developer news sources to create a centralized location to help you stay relevant.",
   "main": "index.js",
   "keywords": [
     "Gulp",
