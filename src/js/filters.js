@@ -1,4 +1,4 @@
-var filters = angular.module('devpad.filters', []);
+var filters = angular.module('devdirector.filters', []);
 
 // The Reddit API stores the time of creation in local epoch-second format.
 // This filter will compare "current" and "created-on" epoch-seconds to

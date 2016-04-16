@@ -1,1 +1,1 @@
-var directives = angular.module('devpad.directives', []);
+var directives = angular.module('devdirector.directives', []);

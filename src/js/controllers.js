@@ -1,14 +1,14 @@
-var controllers = angular.module('devpad.controllers', ['ngSanitize']);
+var controllers = angular.module('devdirector.controllers', ['ngSanitize']);
 
 // Controller for any functionality specific to post list
-controllers.controller('postsListControl', function($scope, $sanitize, $sce, $http, devpad) {
+controllers.controller('postsListControl', function($scope, $sanitize, $sce, $http, devdirector) {
 
   var redditPosts;
 
   $scope.reddit = function(after) {
     console.log('Reddit Call: ' + after);
     // Return a promise on a Reddit service call.
-    devpad.callRedditAPI(after).then(
+    devdirector.callRedditAPI(after).then(
       function(data) {
         // Set pagination variable.
         $scope.after = data.data.data.after;
@@ -34,7 +34,7 @@ controllers.controller('postsListControl', function($scope, $sanitize, $sce, $ht
       }
     }
     // Return all posts sorted by number of upvotes and with valid thumbnail image URLs.if (redditPosts) {
-     return redditPosts;
+    return redditPosts;
   };
 
   $scope.expand = function(post) {
@@ -43,4 +43,3 @@ controllers.controller('postsListControl', function($scope, $sanitize, $sce, $ht
 
   $scope.reddit();
 });
-

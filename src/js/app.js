@@ -1,1 +1,1 @@
-var app = angular.module('devpad', ['devpad.controllers', 'devpad.filters', 'devpad.services', 'devpad.directives']);
+var app = angular.module('devdirector', ['devdirector.controllers', 'devdirector.filters', 'devdirector.services', 'devdirector.directives']);
