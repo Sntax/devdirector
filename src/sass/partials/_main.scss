@@ -131,7 +131,7 @@ a {
 .body {
   padding: rem-calc(45 15);
   &__item {
-    @include transition(all linear 0.3s);
+    @include transition(opacity linear 0.5s);
     border-bottom: solid $athens-gray rem-calc(1);
     background-color: $white;
     padding: rem-calc(45 0);

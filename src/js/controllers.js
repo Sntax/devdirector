@@ -33,8 +33,9 @@ controllers.controller('postsListControl', function($scope, $window, $sanitize, 
         redditPosts[i].data.thumbnail = './dist/img/reddit.svg';
       }
     }
-
-    // Return all posts sorted by number of upvotes and with valid thumbnail image URLs.if (redditPosts) {
+    // Scroll to top of screen.
+    $window.scrollTo(0, 0);
+    // Return all posts with valid thumbnail image URLs.
     return redditPosts;
   };
 
