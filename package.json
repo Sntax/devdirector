@@ -2,6 +2,10 @@
   "name": "devdirector",
   "version": "6.5.19",
   "description": "DevDirector reaches out to popular developer news sources to create a centralized location to help you stay relevant.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sntax/devdirector"
+  },
   "main": "index.js",
   "keywords": [
     "Gulp",
@@ -13,7 +17,7 @@
   "author": "Andrew Hill",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.11.2",
+    "browser-sync": "^2.12.3",
     "bs-html-injector": "^3.0.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
@@ -26,6 +30,6 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
-    "yargs": "^4.3.2"
+    "yargs": "^4.6.0"
   }
 }
