@@ -18,6 +18,9 @@ a {
     text-decoration: none;
     color: $cornflower-blue;
   }
+  &:focus {
+    outline: none;
+  }
 }
 
 /* Header ------------------------------------------------------------------ */
@@ -71,7 +74,6 @@ a {
       a:focus,
       a:active {
         text-decoration: none;
-        color: $pickled-bluewood;
         outline: 0;
       }
       a:hover .glyphicon {
@@ -131,9 +133,8 @@ a {
   &__item {
     @include transition(all linear 0.3s);
     border-bottom: solid $athens-gray rem-calc(1);
-    padding-bottom: rem-calc(45);
-    padding-top: rem-calc(45);
     background-color: $white;
+    padding: rem-calc(45 0);
     &:hover {
       @include transition(all linear 0.3s);
       background-color: $titan-white;
@@ -218,5 +219,18 @@ a {
       text-align: center;
       display: block;
     }
+  }
+}
+
+/* Pagination -------------------------------------------------------------- */
+.paginate {
+  a {
+    color: $cornflower-blue;
+    &:hover, {
+      color: $caribbean-green;
+    }
+  }
+  &__next {
+    text-align: right;
   }
 }

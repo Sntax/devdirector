@@ -59,35 +59,31 @@
             </nav>
         </div>
         <div class="body container" ng-controller="postsListControl">
-            <div class="body__item post row" ng-repeat="post in posts">
-                <div class="col-xs-12">
-                    <div class="row">
-                        <div class="col-xs-2 col-sm-1 body__item__image">
-                            <img class="img-responsive" ng-src="{{ post.data.thumbnail }}" alt="{{ post.data.title }}">
-                        </div>
-                        <div class="col-xs-8 col-sm-10 body__item__content">
-                            <a class="body__item__content--title nsfw-{{ post.data.over_18 }}" ng-bind-html="post.data.title" ng-href="{{ post.data.url }}" target="_blank"></a>
-                            <ul class="body__item__content--additional">
-                                <li><a ng-href="http://www.reddit.com{{ post.data.permalink }}" target="_blank">{{ post.data.num_comments }} Comments</a></li>
-                                <li>Posted {{ post.data.created_utc | epochToHuman }} to <a ng-href="http://www.reddit.com/r/{{ post.data.subreddit }}" target="_blank">r/{{ post.data.subreddit }}</a></li>
-                                <li ng-if="post.data.over_18" class="nsfw-true">NSFW</li>
-                                <li ng-if="post.data.selftext"><a class="preview" ng-click="expand(post)">Preview</a></li>
-                            </ul>
-                            <div ng-if="post.data.selftext">
-                                <div class="body__item__content--preview" ng-show="post.show" ng-bind-html="post.data.selftext | linky"></div>
-                            </div>
-                        </div>
-                        <div class="col-xs-2 col-sm-1 body__item__weight">
-                            <span class="body__item__weight--value">{{ post.data.ups }}</span>
-                        </div>
+            <div class="row body__item post animate-show" ng-repeat="post in posts">
+                <div class="col-xs-2 col-sm-1 body__item__image">
+                    <img class="img-responsive" ng-src="{{ post.data.thumbnail }}" alt="{{ post.data.title }}">
+                </div>
+                <div class="col-xs-8 col-sm-10 body__item__content">
+                    <a class="body__item__content--title nsfw-{{ post.data.over_18 }}" ng-bind-html="post.data.title" ng-href="{{ post.data.url }}" target="_blank"></a>
+                    <ul class="body__item__content--additional">
+                        <li><a ng-href="http://www.reddit.com{{ post.data.permalink }}" target="_blank">{{ post.data.num_comments }} Comments</a></li>
+                        <li>Posted {{ post.data.created_utc | epochToHuman }} to <a ng-href="http://www.reddit.com/r/{{ post.data.subreddit }}" target="_blank">r/{{ post.data.subreddit }}</a></li>
+                        <li ng-if="post.data.over_18" class="nsfw-true">NSFW</li>
+                        <li ng-if="post.data.selftext"><a class="preview" ng-click="expand(post)">Preview</a></li>
+                    </ul>
+                    <div ng-if="post.data.selftext">
+                        <div class="body__item__content--preview" ng-show="post.show" ng-bind-html="post.data.selftext | linky"></div>
                     </div>
                 </div>
+                <div class="col-xs-2 col-sm-1 body__item__weight">
+                    <span class="body__item__weight--value">{{ post.data.ups }}</span>
+                </div>
             </div>
-            <div class="body__item row">
-                <div class="col-xs-6">
+            <div class="row body__item paginate">
+                <div class="col-xs-6 paginate__before">
                     <a ng-click="forward=false; reddit(forward, before, after)">Previous Page</a>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-6 paginate__next">
                     <a ng-click="forward=true; reddit(forward, before, after)">Next Page</a>
                 </div>
             </div>
@@ -96,6 +92,7 @@
         <script type="text/javascript" src="./lib/bootstrap/dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="./lib/angular/angular.min.js"></script>
         <script type="text/javascript" src="./lib/angular-sanitize/angular-sanitize.min.js"></script>
+        <script type="text/javascript" src="./lib/angular-animate/angular-animate.min.js"></script>
         <script type="text/javascript" src="./dist/js/app.min.js"></script>
     </body>
 </html>

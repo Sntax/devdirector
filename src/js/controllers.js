@@ -1,11 +1,12 @@
-var controllers = angular.module('devdirector.controllers', ['ngSanitize']);
+var controllers = angular.module('devdirector.controllers', ['ngSanitize', 'ngAnimate']);
 
 // Controller for any functionality specific to post list
-controllers.controller('postsListControl', function($scope, $sanitize, $sce, $http, devdirector) {
+controllers.controller('postsListControl', function($scope, $window, $sanitize, $sce, $http, devdirector) {
 
   var redditPosts;
 
   $scope.reddit = function(forward, before, after) {
+
     // Return a promise on a Reddit service call.
     devdirector.callRedditAPI(forward, before, after).then(
       function(data) {
@@ -32,6 +33,7 @@ controllers.controller('postsListControl', function($scope, $sanitize, $sce, $ht
         redditPosts[i].data.thumbnail = './dist/img/reddit.svg';
       }
     }
+
     // Return all posts sorted by number of upvotes and with valid thumbnail image URLs.if (redditPosts) {
     return redditPosts;
   };
