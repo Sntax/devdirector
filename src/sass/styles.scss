@@ -7,14 +7,5 @@
 /* Functions --------------------------------------------------------------- */
 @import 'partials/_functions.scss';
 
-/* Extra Small Devices (0px and up) ---------------------------------------- */
-@import 'partials/_xsmall-devices.scss';
-
-/* Small Devices (768px and up) -------------------------------------------- */
-@import 'partials/_small-devices.scss';
-
-/* Medium Devices (992px and up) ------------------------------------------- */
-@import 'partials/_medium-devices.scss';
-
-/* Large Devices (1200px and up) ------------------------------------------- */
-@import 'partials/_large-devices.scss';
+/* Main Styles ------------------------------------------------------------- */
+@import 'partials/_main.scss';
