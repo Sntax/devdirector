@@ -5,13 +5,13 @@ controllers.controller('postsListControl', function($scope, $sanitize, $sce, $ht
 
   var redditPosts;
 
-  $scope.reddit = function(after) {
-    console.log('Reddit Call: ' + after);
+  $scope.reddit = function(forward, before, after) {
     // Return a promise on a Reddit service call.
-    devdirector.callRedditAPI(after).then(
+    devdirector.callRedditAPI(forward, before, after).then(
       function(data) {
-        // Set pagination variable.
+        // Set pagination variables.
         $scope.after = data.data.data.after;
+        $scope.before = data.data.data.before;
         // Binds newly formatted and sorted results to the posts $scope
         $scope.posts = $scope.updateThumbnails(data);
       }
@@ -22,7 +22,6 @@ controllers.controller('postsListControl', function($scope, $sanitize, $sce, $ht
   $scope.updateThumbnails = function(data) {
     // Create a reference to the sorted posts.
     redditPosts = data.data.data.children;
-    console.log(redditPosts);
     // For each post in sorted posts.
     for (var i = 0; i < redditPosts.length; i++) {
       // Store a reference to the current posts image URL.
@@ -37,9 +36,11 @@ controllers.controller('postsListControl', function($scope, $sanitize, $sce, $ht
     return redditPosts;
   };
 
+  // Expand a post
   $scope.expand = function(post) {
     post.show = !post.show;
   };
 
-  $scope.reddit();
+  // Initial call to Reddit API
+  $scope.reddit($scope.forward, $scope.before, $scope.after);
 });

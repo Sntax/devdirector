@@ -85,7 +85,10 @@
             </div>
             <div class="body__item row">
                 <div class="col-xs-6">
-                    <a ng-click=reddit(after)>Next Page</a>
+                    <a ng-click="forward=false; reddit(forward, before, after)">Previous Page</a>
+                </div>
+                <div class="col-xs-6">
+                    <a ng-click="forward=true; reddit(forward, before, after)">Next Page</a>
                 </div>
             </div>
         </div>
