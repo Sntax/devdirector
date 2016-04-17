@@ -2,9 +2,8 @@ var services = angular.module('devdirector.services', []);
 
 services.factory('devdirector', function($http) {
   return {
-    callRedditAPI: function(after) {
-
-      function formatRedditUrl(){
+    callRedditAPI: function(forward, before, after) {
+      function formatRedditUrl() {
         var base = 'http://www.reddit.com/r/';
         var subredditsArray = [
           'accessibility',
@@ -19,17 +18,18 @@ services.factory('devdirector', function($http) {
         ];
         var subreddits = subredditsArray.join('+');
         var jsonCallback = '.json?&jsonp=JSON_CALLBACK';
-        var formattedURL;
+        var maxCount = '&count=25';
+        var formattedURL = base + subreddits + jsonCallback + maxCount;
 
-        if (after) {
-          return base + subreddits + jsonCallback + '&after=' + after;
+        if (forward === true) {
+          return formattedURL + '&after=' + after;
+        } else if (forward === false) {
+          return formattedURL + '&before=' + before;
         } else {
-          return base + subreddits + jsonCallback;
+          return formattedURL;
         }
       }
-
       return $http.jsonp(formatRedditUrl());
     }
   };
 });
-
