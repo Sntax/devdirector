@@ -151,7 +151,8 @@ a {
       border: none;
     }
     &__image img {
-      max-height: rem-calc(80);
+      height: rem-calc(80);
+      width: auto;
       margin: 0 auto;
     }
     &__content {

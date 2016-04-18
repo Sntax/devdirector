@@ -1,6 +1,6 @@
 # DevDirector
 
-The following repository contains all code related to the DevDirector. DevDirector reaches out to popular developer news sources to create a centralized location to help you stay relevant.
+[http://devdirector.com](http://devdirector.com/) - The following repository contains all code related to the DevDirector. DevDirector reaches out to popular developer news sources to create a centralized location to help you stay relevant.
 
 [![DevDirector Screenshot](https://github.com/Sntax/devdirector/blob/master/src/img/screenshot-small.png)](https://raw.githubusercontent.com/Sntax/devdirector/master/src/img/screenshot-large.png)
 
