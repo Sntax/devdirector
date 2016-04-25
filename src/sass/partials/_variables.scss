@@ -1,5 +1,8 @@
-/* Font Face Imports ------------------------------------------------------- */
+/* Device Sizes ------------------------------------------------------------ */
+$extra-small-devices: 0;
+$small-devices: 768px;
 
+/* Font Face Imports ------------------------------------------------------- */
 @font-face {
   font-family: 'latoblack';
   src: url('../../fonts/lato/lato-black.eot');
@@ -97,7 +100,6 @@
 }
 
 /* Font Families ----------------------------------------------------------- */
-
 $font-awesome: "FontAwesome";
 
 $font-fallback: Helvetica, Arial, sans-serif;
@@ -113,7 +115,6 @@ $lato: 'latoregular', $font-fallback;
 
 
 /* Colors ------------------------------------------------------------------ */
-
 $cornflower-blue: rgba(100, 149, 237, 1);
 $pickled-bluewood: rgba(49, 68, 89, 1);
 $caribbean-green: rgba(0, 204, 153, 1);

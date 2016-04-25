@@ -62,7 +62,7 @@ gulp.task('javascript', function() {
 
 /* Sass Task --------------------------------------------------------------- */
 gulp.task('sass', function() {
-  return gulp.src('src/sass/**/*.scss')
+  return gulp.src('src/sass/styles.scss')
     .pipe(plumber(function(error) {
       utils.log(utils.colors.red(error.message));
       this.emit('end');
@@ -89,13 +89,7 @@ gulp.task('default', ['clean'], function() {
       logFileChanges: false,
       injectChanges: true,
       proxy: args.proxy,
-      port: 1337,
-      plugins: [{
-        module: 'bs-html-injector',
-        options: {
-          files: ['./**/*.html']
-        }
-      }]
+      port: 1337
     });
   } else {
     browserSync.init({
@@ -104,13 +98,7 @@ gulp.task('default', ['clean'], function() {
       },
       logFileChanges: false,
       injectChanges: true,
-      port: 1337,
-      plugins: [{
-        module: 'bs-html-injector',
-        options: {
-          files: ['./**/*.html']
-        }
-      }]
+      port: 1337
     });
   }
 

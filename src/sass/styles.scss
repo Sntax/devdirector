@@ -7,5 +7,8 @@
 /* Functions --------------------------------------------------------------- */
 @import 'partials/_functions.scss';
 
-/* Main Styles ------------------------------------------------------------- */
-@import 'partials/_main.scss';
+/* Extra Small Device Styles ----------------------------------------------- */
+@import 'partials/_xs.scss';
+
+/* Small Device Styles ----------------------------------------------------- */
+@import 'partials/_sm.scss';

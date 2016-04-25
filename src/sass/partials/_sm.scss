@@ -1,0 +1,23 @@
+@media (min-width: $small-devices) {
+  /* Body -------------------------------------------------------------------- */
+  .body {
+    &__content--additional li {
+      padding-right: rem-calc(20);
+      margin-right: rem-calc(20);
+    }
+    &__item {
+      &:first-child {
+        margin-top: rem-calc(120);
+      }
+      &__content--title {
+        font-size: rem-calc(32);
+      }
+      &__content--additional {
+        font-size: rem-calc(20);
+      }
+      &__weight--value {
+        font-size: rem-calc(30);
+      }
+    }
+  }
+}

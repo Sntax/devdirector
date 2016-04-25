@@ -18,7 +18,6 @@
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.12.3",
-    "bs-html-injector": "^3.0.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-imagemin": "^2.4.0",
